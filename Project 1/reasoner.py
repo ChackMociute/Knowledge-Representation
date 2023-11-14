@@ -2,6 +2,8 @@ import os
 from sys import argv
 from py4j.java_gateway import JavaGateway
 
+argv.extend(['potato_bowls.ttl', 'CheesyBowl'])
+
 if len(argv) < 3:
     raise SyntaxError(f"""Missing ontology file and/or class name. Should call as:
                       \tpython {os.path.basename(__file__)} ONTOLOGY_FILE CLASS_NAME""")
@@ -13,16 +15,23 @@ ontology = gateway.getOWLParser().parseFile(argv[1] if os.path.exists(argv[1]) e
 # Change all conjunctions so that they have at most two conjuncts
 gateway.convertToBinaryConjunctions(ontology)
 
-elFactory = gateway.getELFactory()
-concept_name = elFactory.getConceptName(argv[2])
+axioms = ontology.tbox().getAxioms()
+elf = gateway.getELFactory()
 
-# Using the reasoners
-elk = gateway.getELKReasoner()
-hermit = gateway.getHermiTReasoner() # might the upper case T!
+nodes = {0: [elf.getConjunction(elf.getConceptName(argv[2]), elf.getConceptName('A'))]}
+changed = True
 
-elk.setOntology(ontology)
-print(f"\nAccording to ELK, {concept_name} has the following subsumers: ")
-subsumers = elk.getSubsumers(concept_name)
-for concept in subsumers:
-    print(" - ",formatter.format(concept))
-print("(",len(subsumers)," in total)")
+def update_nodes():
+    changed = False
+    for n, concepts in nodes.items():
+        for concept in concepts:
+            if concept.getClass().getSimpleName() == 'ConceptConjunction':
+                for c in concept.getConjuncts():
+                    if c not in concepts:
+                        concepts.append(c)
+
+while changed:
+    changed = update_nodes()
+
+for v in nodes[0]:
+    print(formatter.format(v))
