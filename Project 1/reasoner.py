@@ -6,6 +6,8 @@ from py4j.java_gateway import JavaGateway
 
 
 Role = namedtuple('role', 'role node')
+Concept = namedtuple('concept', 'name concept')
+
 
 class Node(Sequence):
     def __init__(self, name, concepts=list(), roles=list()):
@@ -21,6 +23,17 @@ class Node(Sequence):
     
     def append(self, item):
         self.concepts.append(item)
+    
+    def get_concepts_by_name(self, name):
+        return [c for n, c in self.get_named_concepts() if n == name]
+
+    def get_named_concepts(self):
+        return [Concept(c.getClass().getSimpleName(), c) for c in self.concepts]
+    
+    def get_all_conjuncts(self):
+        return [con for c in self.get_concepts_by_name('ConceptConjunction')
+                for con in c.getConjuncts()]
+
 
 class ELReasoner:
     def __init__(self, ontology):
@@ -29,7 +42,9 @@ class ELReasoner:
         self.elf = gateway.getELFactory()
 
     def find_subsumers(self, class_name):
-        self.nodes = [Node(0, [self.elf.getConjunction(self.elf.getConceptName(class_name), self.elf.getConceptName('A'))], [Role('r', self.elf.getConceptName('A'))])]
+        self.nodes = [Node(0, [
+            self.elf.getConjunction(self.elf.getConceptName(class_name), self.elf.getConceptName('A'))],
+            [Role(self.elf.getRole('r'), Node(1, [self.elf.getConceptName('A'), self.elf.getConceptName('B')]))])]
         # self.nodes = [Node(0, [self.elf.getConceptName(class_name)])]
         self.changed = True
         while self.changed:
@@ -39,23 +54,35 @@ class ELReasoner:
     def update_nodes(self):
         for node in self.nodes:
             self.conjunction_rule1(node)
+            self.existential_rule1(node)
             self.existential_rule2(node)
 
     def conjunction_rule1(self, node):
         # Add all concepts in conjunctions that are not currently part of the node
-        for c in [conjunct for c in node
-                  if c.getClass().getSimpleName() == 'ConceptConjunction'
-                  for conjunct in c.getConjuncts()]:
+        for c in node.get_all_conjuncts():
             if c not in node:
                 node.append(c)
                 self.changed = True
     
+    def existential_rule1(self, node):
+        for exs in node.get_concepts_by_name('ExistentialRoleRestriction'):
+            update = True
+            for role in node.roles:
+                if exs.role() == role.role and exs.filler() in role.node:
+                    update = False
+                    break
+            if update:
+                for n in self.nodes:
+                    if exs.filler in n:
+                        node.roles.append(Role(exs.role, n))
+    
     def existential_rule2(self, node):
         for r in node.roles:
-            existential = self.elf.getExistentialRoleRestriction(self.elf.getRole(r.role), r.node)
-            if existential not in node:
-                node.append(existential)
-                self.changed = True
+            for c in r.node:
+                existential = self.elf.getExistentialRoleRestriction(r.role, c)
+                if existential not in node:
+                    node.append(existential)
+                    self.changed = True
 
 
 
