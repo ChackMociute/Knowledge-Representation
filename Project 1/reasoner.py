@@ -10,16 +10,21 @@ Concept = namedtuple('concept', 'name concept')
 
 
 class Node(Sequence):
-    def __init__(self, name, concepts=list(), roles=list()):
-        self.name = name
+    NAME = 0
+    def __init__(self, concepts=list(), roles=None):
+        self.name = Node.NAME
+        Node.NAME += 1
         self.concepts = concepts
-        self.roles = roles
+        self.roles = list() if roles is None else roles
     
     def __getitem__(self, i):
         return self.concepts[i]
     
     def __len__(self):
         return len(self.concepts)
+    
+    def __repr__(self):
+        return f'Node {self.name}:\n' + '\n'.join([formatter.format(c) for c in self.concepts])
     
     def append(self, item):
         self.concepts.append(item)
@@ -42,9 +47,9 @@ class ELReasoner:
         self.elf = gateway.getELFactory()
 
     def find_subsumers(self, class_name):
-        self.nodes = [Node(0, [
-            self.elf.getConjunction(self.elf.getConceptName(class_name), self.elf.getConceptName('A'))],
-            [Role(self.elf.getRole('r'), Node(1, [self.elf.getConceptName('A'), self.elf.getConceptName('B')]))])]
+        self.nodes = [Node([
+            self.elf.getConjunction(self.elf.getConceptName(class_name), self.elf.getConceptName('A')),
+            self.elf.getExistentialRoleRestriction(self.elf.getRole('r'), self.elf.getConjunction(self.elf.getConceptName('B'), self.elf.getConceptName('C')))])]
         # self.nodes = [Node(0, [self.elf.getConceptName(class_name)])]
         self.changed = True
         while self.changed:
@@ -66,23 +71,34 @@ class ELReasoner:
     
     def existential_rule1(self, node):
         for exs in node.get_concepts_by_name('ExistentialRoleRestriction'):
-            update = True
-            for role in node.roles:
-                if exs.role() == role.role and exs.filler() in role.node:
-                    update = False
-                    break
-            if update:
-                for n in self.nodes:
-                    if exs.filler in n:
-                        node.roles.append(Role(exs.role, n))
+            if self.should_update(exs, node.roles):
+                self.update(exs, node.roles)
+    
+    def should_update_ex1(self, exs, roles):
+        for role in roles:
+            if exs.role() == role.role and exs.filler() in role.node:
+                return False
+        return True
+    
+    def update_ex1(self, exs, roles):
+        for n in self.nodes:
+            if exs.filler() in n:
+                roles.append(Role(exs.role, n))
+                return
+        node = Node([exs.filler()])
+        self.nodes.append(node)
+        roles.append(Role(exs.role(), node))
     
     def existential_rule2(self, node):
         for r in node.roles:
             for c in r.node:
-                existential = self.elf.getExistentialRoleRestriction(r.role, c)
-                if existential not in node:
-                    node.append(existential)
-                    self.changed = True
+                self.update_ex2(self.elf.getExistentialRoleRestriction(r.role, c), node)
+    
+    def update_ex2(self, existential, node):
+        if existential not in node:
+            node.append(existential)
+            self.changed = True
+
 
 
 
@@ -103,5 +119,5 @@ if __name__ == "__main__":
     reasoner = ELReasoner(ontology)
     reasoner.find_subsumers(argv[2])
 
-    for v in reasoner.nodes[0]:
-        print(formatter.format(v))
+    for node in reasoner.nodes:
+        print(node, '\n')
