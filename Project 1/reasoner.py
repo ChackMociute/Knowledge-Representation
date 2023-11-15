@@ -38,18 +38,33 @@ class Node(Sequence):
     def get_all_conjuncts(self):
         return [con for c in self.get_concepts_by_name('ConceptConjunction')
                 for con in c.getConjuncts()]
+    
+    def get_all_conjunctions(self):
+        conjunctions = list()
+        for c in self.concepts:
+            conjunctions.extend(self.find_in_constituents(c))
+        return conjunctions
+    
+    def find_in_constituents(self, concept):
+        if concept.getClass().getSimpleName() == "ExistentialRoleRestriction":
+            return self.find_in_constituents(concept.filler())
+        if concept.getClass().getSimpleName() == "GeneralConceptInclusion":
+            return self.find_in_constituents(concept.lhs()) + self.find_in_constituents(concept.rhs())
+        if concept.getClass().getSimpleName() == "EquivalenceAxiom":
+            return [c for con in concept.getConcepts() for c in self.find_in_constituents(con)]
+        elif concept.getClass().getSimpleName() == "ConceptConjunction":
+            return [concept] + [c for conj in concept.getConjuncts() for c in self.find_in_constituents(conj)]
+        return list()
 
 
 class ELReasoner:
     def __init__(self, ontology):
         self.ontology = ontology
         self.axioms = Node(list(ontology.tbox().getAxioms()))
+        self.conjunctions = self.axioms.get_all_conjunctions()
         self.elf = gateway.getELFactory()
 
     def find_subsumers(self, class_name):
-        self.nodes = [Node([
-            self.elf.getConjunction(self.elf.getConceptName(class_name), self.elf.getConceptName('A')),
-            self.elf.getExistentialRoleRestriction(self.elf.getRole('r'), self.elf.getConjunction(self.elf.getConceptName('B'), self.elf.getConceptName('C')))])]
         self.nodes = [Node([self.elf.getConceptName(class_name)])]
         self.changed = True
         while self.changed:
@@ -59,6 +74,7 @@ class ELReasoner:
     def update_nodes(self):
         for node in self.nodes:
             self.conjunction_rule1(node)
+            self.conjunction_rule2(node)
             self.existential_rule1(node)
             self.existential_rule2(node)
             self.subsumption_rule(node)
@@ -69,6 +85,19 @@ class ELReasoner:
             if c not in node:
                 node.append(c)
                 self.changed = True
+
+    def conjunction_rule2(self, node):
+        for i in range(len(node)):
+            for j in range(len(node)):
+                self.update_cnj2(node, self.elf.getConjunction(node[i], node[j]))
+    
+    def update_cnj2(self, node, conjunction):
+        if self.should_update_cnj2(node, conjunction):
+            self.changed = True
+            node.append(conjunction)
+    
+    def should_update_cnj2(self, node, conjunction):
+        return conjunction in self.conjunctions and conjunction not in node
     
     def existential_rule1(self, node):
         for exs in node.get_concepts_by_name('ExistentialRoleRestriction'):
@@ -82,6 +111,7 @@ class ELReasoner:
         return True
     
     def update_ex1(self, exs, roles):
+        self.changed = True
         for n in self.nodes:
             if exs.filler() in n:
                 roles.append(Role(exs.role, n))
@@ -104,19 +134,18 @@ class ELReasoner:
         for gci in self.axioms.get_concepts_by_name("GeneralConceptInclusion"):
             if gci.lhs() in node and gci.rhs() not in node:
                 node.append(gci.rhs())
+                self.changed = True
 
 
 
 if __name__ == "__main__":
-    argv.extend(['potato_bowls.ttl', 'CheesyBowl'])
-
     if len(argv) < 3:
         raise SyntaxError(f"""Missing ontology file and/or class name. Should call with:
                         \tpython {os.path.basename(__file__)} ONTOLOGY_FILE CLASS_NAME""")
 
     gateway = JavaGateway()
     formatter = gateway.getSimpleDLFormatter()
-    ontology = gateway.getOWLParser().parseFile(argv[1])# if os.path.exists(argv[1]) else "pizza.owl")
+    ontology = gateway.getOWLParser().parseFile(argv[1] if os.path.exists(argv[1]) else "pizza.owl")
 
     # Change all conjunctions so that they have at most two conjuncts
     gateway.convertToBinaryConjunctions(ontology)
