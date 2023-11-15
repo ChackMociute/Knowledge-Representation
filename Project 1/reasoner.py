@@ -39,6 +39,7 @@ class Node(Sequence):
         return [con for c in self.get_concepts_by_name('ConceptConjunction')
                 for con in c.getConjuncts()]
     
+    # Returns a list of all conjunctions found in any place in any concept in the node
     def get_all_conjunctions(self):
         conjunctions = list()
         for c in self.concepts:
@@ -87,6 +88,7 @@ class ELReasoner:
                 self.changed = True
 
     def conjunction_rule2(self, node):
+        # Add conjunctions to the node which can be found in the TBox
         for i in range(len(node)):
             for j in range(len(node)):
                 self.update_cnj2(node, self.elf.getConjunction(node[i], node[j]))
@@ -104,6 +106,7 @@ class ELReasoner:
             if self.should_update_ex1(exs, node.roles):
                 self.update_ex1(exs, node.roles)
     
+    # Return false if a role to a concept already exists. True otherwise
     def should_update_ex1(self, exs, roles):
         for role in roles:
             if exs.role() == role.role and exs.filler() in role.node:
@@ -112,10 +115,12 @@ class ELReasoner:
     
     def update_ex1(self, exs, roles):
         self.changed = True
+        # If a node with appropriate concept already exists, add a role connection to it
         for n in self.nodes:
             if exs.filler() in n:
                 roles.append(Role(exs.role, n))
                 return
+        # Otherwise create a new node
         node = Node([exs.filler()])
         self.nodes.append(node)
         roles.append(Role(exs.role(), node))
