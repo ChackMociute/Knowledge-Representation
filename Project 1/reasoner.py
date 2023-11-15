@@ -11,10 +11,10 @@ Concept = namedtuple('concept', 'name concept')
 
 class Node(Sequence):
     NAME = 0
-    def __init__(self, concepts=list(), roles=None):
+    def __init__(self, concepts=None, roles=None):
         self.name = Node.NAME
         Node.NAME += 1
-        self.concepts = concepts
+        self.concepts = list() if concepts is None else concepts
         self.roles = list() if roles is None else roles
     
     def __getitem__(self, i):
@@ -43,14 +43,14 @@ class Node(Sequence):
 class ELReasoner:
     def __init__(self, ontology):
         self.ontology = ontology
-        self.axioms = ontology.tbox().getAxioms()
+        self.axioms = Node(list(ontology.tbox().getAxioms()))
         self.elf = gateway.getELFactory()
 
     def find_subsumers(self, class_name):
         self.nodes = [Node([
             self.elf.getConjunction(self.elf.getConceptName(class_name), self.elf.getConceptName('A')),
             self.elf.getExistentialRoleRestriction(self.elf.getRole('r'), self.elf.getConjunction(self.elf.getConceptName('B'), self.elf.getConceptName('C')))])]
-        # self.nodes = [Node(0, [self.elf.getConceptName(class_name)])]
+        self.nodes = [Node([self.elf.getConceptName(class_name)])]
         self.changed = True
         while self.changed:
             self.changed = False
@@ -61,6 +61,7 @@ class ELReasoner:
             self.conjunction_rule1(node)
             self.existential_rule1(node)
             self.existential_rule2(node)
+            self.subsumption_rule(node)
 
     def conjunction_rule1(self, node):
         # Add all concepts in conjunctions that are not currently part of the node
@@ -71,8 +72,8 @@ class ELReasoner:
     
     def existential_rule1(self, node):
         for exs in node.get_concepts_by_name('ExistentialRoleRestriction'):
-            if self.should_update(exs, node.roles):
-                self.update(exs, node.roles)
+            if self.should_update_ex1(exs, node.roles):
+                self.update_ex1(exs, node.roles)
     
     def should_update_ex1(self, exs, roles):
         for role in roles:
@@ -98,7 +99,11 @@ class ELReasoner:
         if existential not in node:
             node.append(existential)
             self.changed = True
-
+    
+    def subsumption_rule(self, node):
+        for gci in self.axioms.get_concepts_by_name("GeneralConceptInclusion"):
+            if gci.lhs() in node and gci.rhs() not in node:
+                node.append(gci.rhs())
 
 
 
@@ -111,7 +116,7 @@ if __name__ == "__main__":
 
     gateway = JavaGateway()
     formatter = gateway.getSimpleDLFormatter()
-    ontology = gateway.getOWLParser().parseFile(argv[1] if os.path.exists(argv[1]) else "pizza.owl")
+    ontology = gateway.getOWLParser().parseFile(argv[1])# if os.path.exists(argv[1]) else "pizza.owl")
 
     # Change all conjunctions so that they have at most two conjuncts
     gateway.convertToBinaryConjunctions(ontology)
