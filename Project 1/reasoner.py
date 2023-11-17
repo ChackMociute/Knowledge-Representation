@@ -56,14 +56,19 @@ class Node(Sequence):
         elif concept.getClass().getSimpleName() == "ConceptConjunction":
             return [concept] + [c for conj in concept.getConjuncts() for c in self.find_in_constituents(conj)]
         return list()
+    
+    def convert_equivalence_to_subsumption(self, elf):
+        for x, y in map(lambda x: x.getConcepts(), self.get_concepts_by_name("EquivalenceAxiom")):
+            self.concepts.extend([elf.getGCI(x, y), elf.getGCI(y, x)])
 
 
 class ELReasoner:
     def __init__(self, ontology):
         self.ontology = ontology
         self.axioms = Node(list(ontology.tbox().getAxioms()))
-        self.conjunctions = self.axioms.get_all_conjunctions()
         self.elf = gateway.getELFactory()
+        self.axioms.convert_equivalence_to_subsumption(self.elf)
+        self.conjunctions = self.axioms.get_all_conjunctions()
 
     def find_subsumers(self, class_name):
         self.nodes = [Node([self.elf.getConceptName(class_name)])]
@@ -144,6 +149,7 @@ class ELReasoner:
 
 
 if __name__ == "__main__":
+    argv.extend(['potato_bowls.ttl', 'GuiltyPleasureBowl'])
     if len(argv) < 3:
         raise SyntaxError(f"""Missing ontology file and/or class name. Should call with:
                         \tpython {os.path.basename(__file__)} ONTOLOGY_FILE CLASS_NAME""")
