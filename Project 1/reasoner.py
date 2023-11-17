@@ -1,7 +1,11 @@
 import os
+import csv
 from sys import argv
 from collections import namedtuple
 from collections.abc import Sequence
+from random import sample
+from datetime import datetime
+from itertools import permutations
 from py4j.java_gateway import JavaGateway
 
 
@@ -63,12 +67,16 @@ class Node(Sequence):
 
 
 class ELReasoner:
-    def __init__(self, ontology):
+    def __init__(self, ontology, rule_order='random'):
         self.ontology = ontology
         self.axioms = Node(list(ontology.tbox().getAxioms()))
         self.elf = gateway.getELFactory()
         self.axioms.convert_equivalence_to_subsumption(self.elf)
         self.conjunctions = self.axioms.get_all_conjunctions()
+        self.rules = [self.conjunction_rule1, self.conjunction_rule2,
+                      self.existential_rule1, self.existential_rule2,
+                      self.subsumption_rule]
+        self.rule_order = rule_order
 
     def find_subsumers(self, class_name):
         self.nodes = [Node([self.elf.getConceptName(class_name)])]
@@ -79,11 +87,9 @@ class ELReasoner:
 
     def update_nodes(self):
         for node in self.nodes:
-            self.conjunction_rule1(node)
-            self.conjunction_rule2(node)
-            self.existential_rule1(node)
-            self.existential_rule2(node)
-            self.subsumption_rule(node)
+            for i in sample(range(len(self.rules)), k=len(self.rules))\
+                if self.rule_order == "random" else self.rule_order:
+                self.rules[i](node)
 
     def conjunction_rule1(self, node):
         # Add all concepts in conjunctions that are not currently part of the node
@@ -149,7 +155,7 @@ class ELReasoner:
 
 
 if __name__ == "__main__":
-    argv.extend(['potato_bowls.ttl', 'GuiltyPleasureBowl'])
+    # argv.extend(['potato_bowls.ttl', 'GuiltyPleasureBowl'])
     if len(argv) < 3:
         raise SyntaxError(f"""Missing ontology file and/or class name. Should call with:
                         \tpython {os.path.basename(__file__)} ONTOLOGY_FILE CLASS_NAME""")
@@ -160,9 +166,17 @@ if __name__ == "__main__":
 
     # Change all conjunctions so that they have at most two conjuncts
     gateway.convertToBinaryConjunctions(ontology)
+    
 
-    reasoner = ELReasoner(ontology)
-    reasoner.find_subsumers(argv[2])
-
+    with open('data.csv', 'w') as f:
+        f.write('permutation|time\n')
+    for permutation in permutations(range(5)):
+        for _ in range(20):
+            reasoner = ELReasoner(ontology, rule_order=permutation)
+            start = datetime.now()
+            reasoner.find_subsumers(argv[2])
+            with open('data.csv', 'a') as f:
+                f.write(f"{permutation}|{datetime.now() - start}\n")
+    
     for node in reasoner.nodes:
         print(node, '\n')
