@@ -336,8 +336,7 @@
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ingredient
-:Ingredient rdf:type owl:Class ;
-            rdfs:subClassOf :Dish .
+:Ingredient rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ketchup
@@ -402,8 +401,7 @@
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreperation
-:PotatoPreperation rdf:type owl:Class ;
-                   rdfs:subClassOf :Dish .
+:PotatoPreperation rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PureDecadenceBowl
@@ -436,8 +434,7 @@
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sauces
-:Sauces rdf:type owl:Class ;
-        rdfs:subClassOf :Dish .
+:Sauces rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Schnitzel
