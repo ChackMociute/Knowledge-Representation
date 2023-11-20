@@ -4,10 +4,11 @@ from sys import argv
 from collections import namedtuple
 from collections.abc import Sequence
 from random import sample
-from datetime import datetime
-from itertools import permutations
 from py4j.java_gateway import JavaGateway
 
+
+gateway = JavaGateway()
+formatter = gateway.getSimpleDLFormatter()
 
 Role = namedtuple('role', 'role node')
 Concept = namedtuple('concept', 'name concept')
@@ -15,11 +16,14 @@ Concept = namedtuple('concept', 'name concept')
 
 class Node(Sequence):
     NAME = 0
-    def __init__(self, concepts=None, roles=None):
+    def __init__(self, elf, concepts=None, roles=None):
         self.name = Node.NAME
         Node.NAME += 1
+        self.elf = elf
         self.concepts = list() if concepts is None else concepts
         self.roles = list() if roles is None else roles
+        if elf.getTop() not in self.concepts:
+            self.concepts.append(elf.getTop())
     
     def __getitem__(self, i):
         return self.concepts[i]
@@ -61,17 +65,17 @@ class Node(Sequence):
             return [concept] + [c for conj in concept.getConjuncts() for c in self.find_in_constituents(conj)]
         return list()
     
-    def convert_equivalence_to_subsumption(self, elf):
+    def convert_equivalence_to_subsumption(self):
         for x, y in map(lambda x: x.getConcepts(), self.get_concepts_by_name("EquivalenceAxiom")):
-            self.concepts.extend([elf.getGCI(x, y), elf.getGCI(y, x)])
+            self.concepts.extend([self.elf.getGCI(x, y), self.elf.getGCI(y, x)])
 
 
 class ELReasoner:
     def __init__(self, ontology, rule_order='random'):
         self.ontology = ontology
-        self.axioms = Node(list(ontology.tbox().getAxioms()))
         self.elf = gateway.getELFactory()
-        self.axioms.convert_equivalence_to_subsumption(self.elf)
+        self.axioms = Node(self.elf, list(ontology.tbox().getAxioms()))
+        self.axioms.convert_equivalence_to_subsumption()
         self.conjunctions = self.axioms.get_all_conjunctions()
         self.rules = [self.conjunction_rule1, self.conjunction_rule2,
                       self.existential_rule1, self.existential_rule2,
@@ -79,7 +83,7 @@ class ELReasoner:
         self.rule_order = rule_order
 
     def find_subsumers(self, class_name):
-        self.nodes = [Node([self.elf.getConceptName(class_name)])]
+        self.nodes = [Node(self.elf, [self.elf.getConceptName(class_name)])]
         self.changed = True
         while self.changed:
             self.changed = False
@@ -132,7 +136,7 @@ class ELReasoner:
                 roles.append(Role(exs.role, n))
                 return
         # Otherwise create a new node
-        node = Node([exs.filler()])
+        node = Node(self.elf, [exs.filler()])
         self.nodes.append(node)
         roles.append(Role(exs.role(), node))
     
@@ -155,28 +159,16 @@ class ELReasoner:
 
 
 if __name__ == "__main__":
-    # argv.extend(['potato_bowls.ttl', 'GuiltyPleasureBowl'])
     if len(argv) < 3:
         raise SyntaxError(f"""Missing ontology file and/or class name. Should call with:
                         \tpython {os.path.basename(__file__)} ONTOLOGY_FILE CLASS_NAME""")
-
-    gateway = JavaGateway()
-    formatter = gateway.getSimpleDLFormatter()
+    
     ontology = gateway.getOWLParser().parseFile(argv[1] if os.path.exists(argv[1]) else "pizza.owl")
 
     # Change all conjunctions so that they have at most two conjuncts
     gateway.convertToBinaryConjunctions(ontology)
     
-
-    with open('data.csv', 'w') as f:
-        f.write('permutation|time\n')
-    for permutation in permutations(range(5)):
-        for _ in range(20):
-            reasoner = ELReasoner(ontology, rule_order=permutation)
-            start = datetime.now()
-            reasoner.find_subsumers(argv[2])
-            with open('data.csv', 'a') as f:
-                f.write(f"{permutation}|{datetime.now() - start}\n")
+    reasoner = ELReasoner(ontology)
     
-    for node in reasoner.nodes:
-        print(node, '\n')
+    for subsumer in reasoner.nodes[0]:
+        print(subsumer, '\n')
