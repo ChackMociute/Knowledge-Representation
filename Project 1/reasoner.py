@@ -1,5 +1,4 @@
 import os
-import csv
 from sys import argv
 from collections import namedtuple
 from collections.abc import Sequence
@@ -22,8 +21,8 @@ class Node(Sequence):
         self.elf = elf
         self.concepts = list() if concepts is None else concepts
         self.roles = list() if roles is None else roles
-        if elf.getTop() not in self.concepts:
-            self.concepts.append(elf.getTop())
+        # if elf.getTop() not in self.concepts:
+        #     self.concepts.append(elf.getTop())
     
     def __getitem__(self, i):
         return self.concepts[i]
@@ -133,7 +132,7 @@ class ELReasoner:
         # If a node with appropriate concept already exists, add a role connection to it
         for n in self.nodes:
             if exs.filler() in n:
-                roles.append(Role(exs.role, n))
+                roles.append(Role(exs.role(), n))
                 return
         # Otherwise create a new node
         node = Node(self.elf, [exs.filler()])
