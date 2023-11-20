@@ -11,16 +11,14 @@ ontologies = list()
 for file in os.listdir('data/ontologies/'):
     ontology = gateway.getOWLParser().parseFile(os.path.join('data/ontologies/', file))
     gateway.convertToBinaryConjunctions(ontology)
-    ontologies.append((ontology, [formatter.format(c) for c in choices(list(ontology.getConceptNames()), k=3)], file))
+    ontologies.append((ontology, [formatter.format(c) for c in choices(list(ontology.getConceptNames()), k=3)]))
 
 def test_permutation(perm):
-    for ont, concepts, f in ontologies:
-        s = datetime.now()
+    for ont, concepts in ontologies:
         for c in concepts:
             reasoner = ELReasoner(ont, rule_order=perm)
             reasoner.find_subsumers(c)
             del(reasoner)
-        print(f"{f}: {datetime.now() - s}")
     
 permutations = [(2,0,1,3,4), (2,0,1,4,3), (4,3,0,1,2), (4,3,1,0,2), (3,4,1,0,2)]
 datapath = 'data/data2.csv'
