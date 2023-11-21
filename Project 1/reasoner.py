@@ -21,8 +21,6 @@ class Node(Sequence):
         self.elf = elf
         self.concepts = list() if concepts is None else concepts
         self.roles = list() if roles is None else roles
-        # if elf.getTop() not in self.concepts:
-        #     self.concepts.append(elf.getTop())
     
     def __getitem__(self, i):
         return self.concepts[i]
@@ -87,6 +85,7 @@ class ELReasoner:
         while self.changed:
             self.changed = False
             self.update_nodes()
+        return self.nodes[0].get_concepts_by_name("ConceptName")
 
     def update_nodes(self):
         for node in self.nodes:
@@ -168,7 +167,6 @@ if __name__ == "__main__":
     gateway.convertToBinaryConjunctions(ontology)
     
     reasoner = ELReasoner(ontology)
-    reasoner.find_subsumers(argv[2])
-
-    for subsumer in reasoner.nodes[0]:
+    
+    for subsumer in reasoner.find_subsumers(argv[2]):
         print(subsumer)
