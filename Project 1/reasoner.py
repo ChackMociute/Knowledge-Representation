@@ -80,12 +80,18 @@ class ELReasoner:
         self.rule_order = rule_order
 
     def find_subsumers(self, class_name):
-        self.nodes = [Node(self.elf, [self.elf.getConceptName(class_name)])]
+        self.initialize_nodes(class_name)
         self.changed = True
         while self.changed:
             self.changed = False
             self.update_nodes()
         return self.nodes[0].get_concepts_by_name("ConceptName")
+
+    def initialize_nodes(self, class_name):
+        c = self.elf.getConceptName(f'"{class_name}"')\
+            if self.elf.getConceptName(f'"{class_name}"') in self.ontology.getConceptNames()\
+            else self.elf.getConceptName(class_name)
+        self.nodes = [Node(self.elf, [c])]
 
     def update_nodes(self):
         for node in self.nodes:
@@ -157,11 +163,12 @@ class ELReasoner:
 
 
 if __name__ == "__main__":
+    argv.extend(["data/ontologies/pizza.owl", "Margherita"])
     if len(argv) < 3:
         raise SyntaxError(f"""Missing ontology file and/or class name. Should call with:
                         \tpython {os.path.basename(__file__)} ONTOLOGY_FILE CLASS_NAME""")
     
-    ontology = gateway.getOWLParser().parseFile(argv[1] if os.path.exists(argv[1]) else "pizza.owl")
+    ontology = gateway.getOWLParser().parseFile(argv[1])
 
     # Change all conjunctions so that they have at most two conjuncts
     gateway.convertToBinaryConjunctions(ontology)
