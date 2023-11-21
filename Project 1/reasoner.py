@@ -168,6 +168,7 @@ if __name__ == "__main__":
     gateway.convertToBinaryConjunctions(ontology)
     
     reasoner = ELReasoner(ontology)
-    
+    reasoner.find_subsumers(argv[2])
+
     for subsumer in reasoner.nodes[0]:
-        print(subsumer, '\n')
+        print(subsumer)
