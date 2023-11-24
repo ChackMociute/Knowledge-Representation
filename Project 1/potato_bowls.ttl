@@ -12,13 +12,13 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProducts
-:hasAnimalProducts rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :hasIngredient ;
-                   rdf:type owl:FunctionalProperty ,
-                            owl:InverseFunctionalProperty ;
-                   rdfs:domain :PotatoBowl ;
-                   rdfs:range :AnimalProducts .
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct
+:hasAnimalProduct rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasIngredient ;
+                  rdf:type owl:FunctionalProperty ,
+                           owl:InverseFunctionalProperty ;
+                  rdfs:domain :PotatoBowl ;
+                  rdfs:range :AnimalProducts .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient
@@ -42,13 +42,13 @@
           rdfs:range :Sauces .
 
 
-###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetables
-:hasVegetables rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :hasIngredient ;
-               rdf:type owl:FunctionalProperty ,
-                        owl:InverseFunctionalProperty ;
-               rdfs:domain :PotatoBowl ;
-               rdfs:range :Vegetables .
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable
+:hasVegetable rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasIngredient ;
+              rdf:type owl:FunctionalProperty ,
+                       owl:InverseFunctionalProperty ;
+              rdfs:domain :PotatoBowl ;
+              rdfs:range :Vegetables .
 
 
 #################################################################
@@ -82,11 +82,11 @@
                                                            owl:someValuesFrom :Ketchup
                                                          ]
                                                          [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasVegetables ;
+                                                           owl:onProperty :hasVegetable ;
                                                            owl:someValuesFrom :Beans
                                                          ]
                                                          [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasVegetables ;
+                                                           owl:onProperty :hasVegetable ;
                                                            owl:someValuesFrom :BellPepper
                                                          ]
                                                        ) ;
@@ -108,7 +108,7 @@
 :CheesyBowl rdf:type owl:Class ;
             owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
                                                        [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasAnimalProducts ;
+                                                         owl:onProperty :hasAnimalProduct ;
                                                          owl:someValuesFrom :Cheese
                                                        ]
                                                      ) ;
@@ -121,7 +121,7 @@
 :ChiliBowl rdf:type owl:Class ;
            rdfs:subClassOf :SignatureBowls ,
                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasAnimalProducts ;
+                                                    owl:onProperty :hasAnimalProduct ;
                                                     owl:someValuesFrom :Meat
                                                   ]
                                                   [ rdf:type owl:Restriction ;
@@ -129,15 +129,15 @@
                                                     owl:someValuesFrom :Mash
                                                   ]
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasVegetables ;
+                                                    owl:onProperty :hasVegetable ;
                                                     owl:someValuesFrom :Beans
                                                   ]
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasVegetables ;
+                                                    owl:onProperty :hasVegetable ;
                                                     owl:someValuesFrom :BellPepper
                                                   ]
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasVegetables ;
+                                                    owl:onProperty :hasVegetable ;
                                                     owl:someValuesFrom :ChiliPepper
                                                   ]
                                                 ) ;
@@ -154,7 +154,7 @@
 :ChiliSteakBowl rdf:type owl:Class ;
                 rdfs:subClassOf :SignatureBowls ,
                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasAnimalProducts ;
+                                                         owl:onProperty :hasAnimalProduct ;
                                                          owl:someValuesFrom :Steak
                                                        ]
                                                        [ rdf:type owl:Restriction ;
@@ -166,7 +166,7 @@
                                                          owl:someValuesFrom :Gravy
                                                        ]
                                                        [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasVegetables ;
+                                                         owl:onProperty :hasVegetable ;
                                                          owl:someValuesFrom :ChiliPepper
                                                        ]
                                                      ) ;
@@ -193,7 +193,7 @@
 :DoubleDairyBowl rdf:type owl:Class ;
                  rdfs:subClassOf :SignatureBowls ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasAnimalProducts ;
+                                                          owl:onProperty :hasAnimalProduct ;
                                                           owl:someValuesFrom :Cheese
                                                         ]
                                                         [ rdf:type owl:Restriction ;
@@ -205,7 +205,7 @@
                                                           owl:someValuesFrom :Sourcream
                                                         ]
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasVegetables ;
+                                                          owl:onProperty :hasVegetable ;
                                                           owl:someValuesFrom :BellPepper
                                                         ]
                                                       ) ;
@@ -222,7 +222,7 @@
 :FreiburgBowl rdf:type owl:Class ;
               rdfs:subClassOf :SignatureBowls ,
                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :hasAnimalProducts ;
+                                                       owl:onProperty :hasAnimalProduct ;
                                                        owl:someValuesFrom :Meat
                                                      ]
                                                      [ rdf:type owl:Restriction ;
@@ -270,7 +270,7 @@
 :GreasyDumplingBowl rdf:type owl:Class ;
                     rdfs:subClassOf :SignatureBowls ,
                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasAnimalProducts ;
+                                                             owl:onProperty :hasAnimalProduct ;
                                                              owl:someValuesFrom :Steak
                                                            ]
                                                            [ rdf:type owl:Restriction ;
@@ -282,7 +282,7 @@
                                                              owl:someValuesFrom :Gravy
                                                            ]
                                                            [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasVegetables ;
+                                                             owl:onProperty :hasVegetable ;
                                                              owl:someValuesFrom :BellPepper
                                                            ]
                                                          ) ;
@@ -344,7 +344,7 @@
 :MakeYouGassyBowl rdf:type owl:Class ;
                   owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
                                                              [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :hasVegetables ;
+                                                               owl:onProperty :hasVegetable ;
                                                                owl:someValuesFrom :Beans
                                                              ]
                                                            ) ;
@@ -372,7 +372,7 @@
 :NonVegetarianBowl rdf:type owl:Class ;
                    owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
                                                               [ rdf:type owl:Restriction ;
-                                                                owl:onProperty :hasAnimalProducts ;
+                                                                owl:onProperty :hasAnimalProduct ;
                                                                 owl:someValuesFrom :Meat
                                                               ]
                                                             ) ;
@@ -414,11 +414,11 @@
 :PureDecadenceBowl rdf:type owl:Class ;
                    rdfs:subClassOf :SignatureBowls ,
                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasAnimalProducts ;
+                                                            owl:onProperty :hasAnimalProduct ;
                                                             owl:someValuesFrom :Cheese
                                                           ]
                                                           [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasAnimalProducts ;
+                                                            owl:onProperty :hasAnimalProduct ;
                                                             owl:someValuesFrom :Meat
                                                           ]
                                                           [ rdf:type owl:Restriction ;
@@ -472,7 +472,7 @@
 :SpicyBowl rdf:type owl:Class ;
            owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :hasVegetables ;
+                                                        owl:onProperty :hasVegetable ;
                                                         owl:someValuesFrom :ChiliPepper
                                                       ]
                                                     ) ;
@@ -490,7 +490,7 @@
 :TheProductiveBowl rdf:type owl:Class ;
                    rdfs:subClassOf :SignatureBowls ,
                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasAnimalProducts ;
+                                                            owl:onProperty :hasAnimalProduct ;
                                                             owl:someValuesFrom :Meat
                                                           ]
                                                           [ rdf:type owl:Restriction ;
@@ -507,7 +507,7 @@
            owl:equivalentClass [ owl:intersectionOf ( :VegetarianBowl
                                                       [ rdf:type owl:Class ;
                                                         owl:complementOf [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :hasAnimalProducts ;
+                                                                           owl:onProperty :hasAnimalProduct ;
                                                                            owl:someValuesFrom :AnimalProducts
                                                                          ]
                                                       ]
@@ -527,7 +527,7 @@
                 owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
                                                            [ rdf:type owl:Class ;
                                                              owl:complementOf [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :hasAnimalProducts ;
+                                                                                owl:onProperty :hasAnimalProduct ;
                                                                                 owl:someValuesFrom :Meat
                                                                               ]
                                                            ]
