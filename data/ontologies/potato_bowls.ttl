@@ -1,10 +1,10 @@
-@prefix : <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/> .
+@prefix : <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/> .
+@base <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#> .
 
 <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4> rdf:type owl:Ontology .
 
@@ -12,534 +12,760 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProducts
-:hasAnimalProducts rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :hasIngredient ;
-                   rdf:type owl:FunctionalProperty ,
-                            owl:InverseFunctionalProperty ;
-                   rdfs:domain :PotatoBowl ;
-                   rdfs:range :AnimalProducts .
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#hasChefPreperation
+:hasChefPreperation rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> rdf:type owl:ObjectProperty ;
+                                                                                           rdfs:subPropertyOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient> ;
+                                                                                           rdf:type owl:FunctionalProperty ,
+                                                                                                    owl:InverseFunctionalProperty ;
+                                                                                           rdfs:domain <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> ;
+                                                                                           rdfs:range <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient
-:hasIngredient rdf:type owl:ObjectProperty .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient> rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation
-:hasPreparation rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasIngredient ;
-                rdf:type owl:FunctionalProperty ;
-                rdfs:domain :PotatoBowl ;
-                rdfs:range :PotatoPreparation .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> rdf:type owl:ObjectProperty ;
+                                                                                         rdfs:subPropertyOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient> ;
+                                                                                         rdf:type owl:FunctionalProperty ,
+                                                                                                  owl:InverseFunctionalProperty ;
+                                                                                         rdfs:domain <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> ;
+                                                                                         rdfs:range <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreparation> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce
-:hasSauce rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :hasIngredient ;
-          rdf:type owl:FunctionalProperty ,
-                   owl:InverseFunctionalProperty ;
-          rdfs:domain :PotatoBowl ;
-          rdfs:range :Sauces .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> rdf:type owl:ObjectProperty ;
+                                                                                   rdfs:subPropertyOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient> ;
+                                                                                   rdf:type owl:FunctionalProperty ,
+                                                                                            owl:InverseFunctionalProperty ;
+                                                                                   rdfs:domain <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> ;
+                                                                                   rdfs:range <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sauces> .
 
 
-###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetables
-:hasVegetables rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :hasIngredient ;
-               rdf:type owl:FunctionalProperty ,
-                        owl:InverseFunctionalProperty ;
-               rdfs:domain :PotatoBowl ;
-               rdfs:range :Vegetables .
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> rdf:type owl:ObjectProperty ;
+                                                                                       rdfs:subPropertyOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient> ;
+                                                                                       rdf:type owl:FunctionalProperty ,
+                                                                                                owl:InverseFunctionalProperty ;
+                                                                                       rdfs:domain <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> ;
+                                                                                       rdfs:range <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables> .
 
 
 #################################################################
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#CheapBowl
+:CheapBowl rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                        owl:onClass <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts>
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                        owl:onClass <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables>
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#ChefGSpecial
+:ChefGSpecial rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasChefPreperation ;
+                                    owl:hasValue :ChefGSpecial
+                                  ] ;
+              rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#ChefKSpecial
+:ChefKSpecial rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasChefPreperation ;
+                                    owl:hasValue :ChefKSpecial
+                                  ] ;
+              rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#ChefYSpecial
+:ChefYSpecial rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasChefPreperation ;
+                                    owl:hasValue :ChefYSpecial
+                                  ] ;
+              rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#Chefs
+:Chefs rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#ExpensiveBowl
+:ExpensiveBowl rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                            owl:onClass <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts>
+                                                          ]
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                            owl:onClass <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#Food
+:Food rdf:type owl:Class .
+
+
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts
-:AnimalProducts rdf:type owl:Class ;
-                rdfs:subClassOf :Ingredient .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts> rdf:type owl:Class ;
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ingredient> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BakedPotato
-:BakedPotato rdf:type owl:Class ;
-             rdfs:subClassOf :WholePotatos .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BakedPotato> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/WholePotatos> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans
-:Beans rdf:type owl:Class ;
-       rdfs:subClassOf :Vegetables .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellAndBeansBowl
-:BellAndBeansBowl rdf:type owl:Class ;
-                  rdfs:subClassOf :SignatureBowls ,
-                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasPreparation ;
-                                                           owl:someValuesFrom :CurlyFries
-                                                         ]
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasSauce ;
-                                                           owl:someValuesFrom :Ketchup
-                                                         ]
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasVegetables ;
-                                                           owl:someValuesFrom :Beans
-                                                         ]
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasVegetables ;
-                                                           owl:someValuesFrom :BellPepper
-                                                         ]
-                                                       ) ;
-                                    rdf:type owl:Class
-                                  ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellAndBeansBowl> rdf:type owl:Class ;
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CurlyFries>
+                                                                                                                                  ]
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ketchup>
+                                                                                                                                  ]
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans>
+                                                                                                                                  ]
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                                                  ]
+                                                                                                                                ) ;
+                                                                                                             rdf:type owl:Class
+                                                                                                           ] ,
+                                                                                                           [ rdf:type owl:Class ;
+                                                                                                             owl:unionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                             owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans>
+                                                                                                                           ]
+                                                                                                                         )
+                                                                                                           ] ,
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans>
+                                                                                                           ] ,
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                           ] ,
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                             owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CurlyFries>
+                                                                                                           ] ,
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                             owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ketchup>
+                                                                                                           ] ,
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :hasChefPreperation ;
+                                                                                                             owl:hasValue :ChefGSpecial
+                                                                                                           ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper
-:BellPepper rdf:type owl:Class ;
-            rdfs:subClassOf :Vegetables .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Cheese
-:Cheese rdf:type owl:Class ;
-        rdfs:subClassOf :DiaryProduct .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Cheese> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/DiaryProduct> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CheesyBowl
-:CheesyBowl rdf:type owl:Class ;
-            owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasAnimalProducts ;
-                                                         owl:someValuesFrom :Cheese
-                                                       ]
-                                                     ) ;
-                                  rdf:type owl:Class
-                                ] ;
-            rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CheesyBowl> rdf:type owl:Class ;
+                                                                                     owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl>
+                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Cheese>
+                                                                                                                                ]
+                                                                                                                              ) ;
+                                                                                                           rdf:type owl:Class
+                                                                                                         ] ;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliBowl
-:ChiliBowl rdf:type owl:Class ;
-           rdfs:subClassOf :SignatureBowls ,
-                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasAnimalProducts ;
-                                                    owl:someValuesFrom :Meat
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasPreparation ;
-                                                    owl:someValuesFrom :Mash
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasVegetables ;
-                                                    owl:someValuesFrom :Beans
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasVegetables ;
-                                                    owl:someValuesFrom :BellPepper
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasVegetables ;
-                                                    owl:someValuesFrom :ChiliPepper
-                                                  ]
-                                                ) ;
-                             rdf:type owl:Class
-                           ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliBowl> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                                           ]
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mash>
+                                                                                                                           ]
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans>
+                                                                                                                           ]
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                                           ]
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliPepper>
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ] ,
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                      owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                    ] ,
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                      owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mash>
+                                                                                                    ] ,
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                      owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                          owl:unionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans>
+                                                                                                                                        <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                                                        <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliPepper>
+                                                                                                                                      )
+                                                                                                                        ]
+                                                                                                    ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliPepper
-:ChiliPepper rdf:type owl:Class ;
-             rdfs:subClassOf :Vegetables .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliPepper> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliSteakBowl
-:ChiliSteakBowl rdf:type owl:Class ;
-                rdfs:subClassOf :SignatureBowls ,
-                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasAnimalProducts ;
-                                                         owl:someValuesFrom :Steak
-                                                       ]
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasPreparation ;
-                                                         owl:someValuesFrom :Gratin
-                                                       ]
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasSauce ;
-                                                         owl:someValuesFrom :Gravy
-                                                       ]
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasVegetables ;
-                                                         owl:someValuesFrom :ChiliPepper
-                                                       ]
-                                                     ) ;
-                                  rdf:type owl:Class
-                                ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliSteakBowl> rdf:type owl:Class ;
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                         [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Steak>
+                                                                                                                                ]
+                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gratin>
+                                                                                                                                ]
+                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gravy>
+                                                                                                                                ]
+                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliPepper>
+                                                                                                                                ]
+                                                                                                                              ) ;
+                                                                                                           rdf:type owl:Class
+                                                                                                         ] ,
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                           owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Steak>
+                                                                                                         ] ,
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                           owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gratin>
+                                                                                                         ] ,
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                           owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gravy>
+                                                                                                         ] ,
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                           owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliPepper>
+                                                                                                         ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CookedPotato
-:CookedPotato rdf:type owl:Class ;
-              rdfs:subClassOf :WholePotatos .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CookedPotato> rdf:type owl:Class ;
+                                                                                       rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/WholePotatos> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CurlyFries
-:CurlyFries rdf:type owl:Class ;
-            rdfs:subClassOf :FriedPotato .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CurlyFries> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedPotato> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/DiaryProduct
-:DiaryProduct rdf:type owl:Class ;
-              rdfs:subClassOf :AnimalProducts .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/DiaryProduct> rdf:type owl:Class ;
+                                                                                       rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/DoubleDairyBowl
-:DoubleDairyBowl rdf:type owl:Class ;
-                 rdfs:subClassOf :SignatureBowls ,
-                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasAnimalProducts ;
-                                                          owl:someValuesFrom :Cheese
-                                                        ]
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasPreparation ;
-                                                          owl:someValuesFrom :Gratin
-                                                        ]
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasSauce ;
-                                                          owl:someValuesFrom :Sourcream
-                                                        ]
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasVegetables ;
-                                                          owl:someValuesFrom :BellPepper
-                                                        ]
-                                                      ) ;
-                                   rdf:type owl:Class
-                                 ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/DoubleDairyBowl> rdf:type owl:Class ;
+                                                                                          rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                   owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Cheese>
+                                                                                                                                 ]
+                                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                   owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gratin>
+                                                                                                                                 ]
+                                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                   owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sourcream>
+                                                                                                                                 ]
+                                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                                   owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                                   owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                                                 ]
+                                                                                                                               ) ;
+                                                                                                            rdf:type owl:Class
+                                                                                                          ] ,
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                            owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Cheese>
+                                                                                                          ] ,
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                            owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gratin>
+                                                                                                          ] ,
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                            owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sourcream>
+                                                                                                          ] ,
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                            owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                          ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Dumplings
-:Dumplings rdf:type owl:Class ;
-           rdfs:subClassOf :Special .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Dumplings> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Special> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FreiburgBowl
-:FreiburgBowl rdf:type owl:Class ;
-              rdfs:subClassOf :SignatureBowls ,
-                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :hasAnimalProducts ;
-                                                       owl:someValuesFrom :Meat
-                                                     ]
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :hasPreparation ;
-                                                       owl:someValuesFrom :BakedPotato
-                                                     ]
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :hasSauce ;
-                                                       owl:someValuesFrom :Sourcream
-                                                     ]
-                                                   ) ;
-                                rdf:type owl:Class
-                              ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FreiburgBowl> rdf:type owl:Class ;
+                                                                                       rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                                              ]
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BakedPotato>
+                                                                                                                              ]
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sourcream>
+                                                                                                                              ]
+                                                                                                                            ) ;
+                                                                                                         rdf:type owl:Class
+                                                                                                       ] ,
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                         owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                       ] ,
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                         owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BakedPotato>
+                                                                                                       ] ,
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                         owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sourcream>
+                                                                                                       ] ,
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty :hasChefPreperation ;
+                                                                                                         owl:hasValue :ChefYSpecial
+                                                                                                       ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedBowl
-:FriedBowl rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :hasPreparation ;
-                                                        owl:someValuesFrom :FriedPotato
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] ;
-           rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedBowl> rdf:type owl:Class ;
+                                                                                    owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl>
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                 owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedPotato>
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ] ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedPotato
-:FriedPotato rdf:type owl:Class ;
-             rdfs:subClassOf :PotatoPreparation .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedPotato> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreparation> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gratin
-:Gratin rdf:type owl:Class ;
-        rdfs:subClassOf :Special .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gratin> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Special> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gravy
-:Gravy rdf:type owl:Class ;
-       rdfs:subClassOf :HeavySauce .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gravy> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/GreasyDumplingBowl
-:GreasyDumplingBowl rdf:type owl:Class ;
-                    rdfs:subClassOf :SignatureBowls ,
-                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasAnimalProducts ;
-                                                             owl:someValuesFrom :Steak
-                                                           ]
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasPreparation ;
-                                                             owl:someValuesFrom :Dumplings
-                                                           ]
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasSauce ;
-                                                             owl:someValuesFrom :Gravy
-                                                           ]
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :hasVegetables ;
-                                                             owl:someValuesFrom :BellPepper
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/GreasyDumplingBowl> rdf:type owl:Class ;
+                                                                                             rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                      owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Steak>
+                                                                                                                                    ]
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                      owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Dumplings>
+                                                                                                                                    ]
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                      owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gravy>
+                                                                                                                                    ]
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                                      owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                                                    ]
+                                                                                                                                  ) ;
+                                                                                                               rdf:type owl:Class
+                                                                                                             ] ,
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                               owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Steak>
+                                                                                                             ] ,
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                               owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Dumplings>
+                                                                                                             ] ,
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                               owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Gravy>
+                                                                                                             ] ,
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                               owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/BellPepper>
+                                                                                                             ] ,
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty :hasChefPreperation ;
+                                                                                                               owl:hasValue :ChefKSpecial
+                                                                                                             ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/GuiltyPleasureBowl
-:GuiltyPleasureBowl rdf:type owl:Class ;
-                    owl:equivalentClass [ owl:intersectionOf ( :CheesyBowl
-                                                               :FriedBowl
-                                                               :NonVegetarianBowl
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :hasSauce ;
-                                                                 owl:someValuesFrom :HeavySauce
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ;
-                    rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/GuiltyPleasureBowl> rdf:type owl:Class ;
+                                                                                             owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/CheesyBowl>
+                                                                                                                                        <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedBowl>
+                                                                                                                                        <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/NonVegetarianBowl>
+                                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                                          owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                          owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce>
+                                                                                                                                        ]
+                                                                                                                                      ) ;
+                                                                                                                   rdf:type owl:Class
+                                                                                                                 ] ;
+                                                                                             rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HealthyBowl
-:HealthyBowl rdf:type owl:Class ;
-             owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
-                                                        [ rdf:type owl:Class ;
-                                                          owl:complementOf [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :hasPreparation ;
-                                                                             owl:someValuesFrom :FriedPotato
-                                                                           ]
-                                                        ]
-                                                        [ rdf:type owl:Class ;
-                                                          owl:complementOf [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :hasSauce ;
-                                                                             owl:someValuesFrom :HeavySauce
-                                                                           ]
-                                                        ]
-                                                      ) ;
-                                   rdf:type owl:Class
-                                 ] ;
-             rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HealthyBowl> rdf:type owl:Class ;
+                                                                                      owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl>
+                                                                                                                                 [ rdf:type owl:Class ;
+                                                                                                                                   owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                                      owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedPotato>
+                                                                                                                                                    ]
+                                                                                                                                 ]
+                                                                                                                                 [ rdf:type owl:Class ;
+                                                                                                                                   owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                                                                      owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                                      owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce>
+                                                                                                                                                    ]
+                                                                                                                                 ]
+                                                                                                                               ) ;
+                                                                                                            rdf:type owl:Class
+                                                                                                          ] ;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce
-:HeavySauce rdf:type owl:Class ;
-            rdfs:subClassOf :Sauces .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sauces> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ingredient
-:Ingredient rdf:type owl:Class .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ingredient> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf :Food .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ketchup
-:Ketchup rdf:type owl:Class ;
-         rdfs:subClassOf :SimpleSauce .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ketchup> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SimpleSauce> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/MakeYouGassyBowl
-:MakeYouGassyBowl rdf:type owl:Class ;
-                  owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
-                                                             [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :hasVegetables ;
-                                                               owl:someValuesFrom :Beans
-                                                             ]
-                                                           ) ;
-                                        rdf:type owl:Class
-                                      ] ;
-                  rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/MakeYouGassyBowl> rdf:type owl:Class ;
+                                                                                           owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl>
+                                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                                        owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                                        owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Beans>
+                                                                                                                                      ]
+                                                                                                                                    ) ;
+                                                                                                                 rdf:type owl:Class
+                                                                                                               ] ;
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mash
-:Mash rdf:type owl:Class ;
-      rdfs:subClassOf :Special .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mash> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Special> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mayonnaise
-:Mayonnaise rdf:type owl:Class ;
-            rdfs:subClassOf :SimpleSauce .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mayonnaise> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SimpleSauce> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat
-:Meat rdf:type owl:Class ;
-      rdfs:subClassOf :AnimalProducts .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/NonVegetarianBowl
-:NonVegetarianBowl rdf:type owl:Class ;
-                   owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty :hasAnimalProducts ;
-                                                                owl:someValuesFrom :Meat
-                                                              ]
-                                                            ) ;
-                                         rdf:type owl:Class
-                                       ] ;
-                   rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/NonVegetarianBowl> rdf:type owl:Class ;
+                                                                                            owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl>
+                                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                                         owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                         owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                                                       ]
+                                                                                                                                     ) ;
+                                                                                                                  rdf:type owl:Class
+                                                                                                                ] ;
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PickeledCabbage
-:PickeledCabbage rdf:type owl:Class ;
-                 rdfs:subClassOf :Vegetables .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PickeledCabbage> rdf:type owl:Class ;
+                                                                                          rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl
-:PotatoBowl rdf:type owl:Class ;
-            rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                     owl:onProperty :hasIngredient ;
-                                                     owl:someValuesFrom :Ingredient
-                                                   ]
-                                                   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty :hasPreparation ;
-                                                     owl:someValuesFrom :PotatoPreparation
-                                                   ]
-                                                 ) ;
-                              rdf:type owl:Class
-                            ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf :Food ,
+                                                                                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasIngredient> ;
+                                                                                                                              owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ingredient>
+                                                                                                                            ]
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                              owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreparation>
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoFries
-:PotatoFries rdf:type owl:Class ;
-             rdfs:subClassOf :FriedPotato .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoFries> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedPotato> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreparation
-:PotatoPreparation rdf:type owl:Class .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreparation> rdf:type owl:Class ;
+                                                                                            rdfs:subClassOf :Food .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PureDecadenceBowl
-:PureDecadenceBowl rdf:type owl:Class ;
-                   rdfs:subClassOf :SignatureBowls ,
-                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasAnimalProducts ;
-                                                            owl:someValuesFrom :Cheese
-                                                          ]
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasAnimalProducts ;
-                                                            owl:someValuesFrom :Meat
-                                                          ]
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasPreparation ;
-                                                            owl:someValuesFrom :FriedPotato
-                                                          ]
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasSauce ;
-                                                            owl:someValuesFrom :HeavySauce
-                                                          ]
-                                                        ) ;
-                                     rdf:type owl:Class
-                                   ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PureDecadenceBowl> rdf:type owl:Class ;
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                     owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Cheese>
+                                                                                                                                   ]
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                     owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                                                   ]
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                     owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/FriedPotato>
+                                                                                                                                   ]
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasSauce> ;
+                                                                                                                                     owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce>
+                                                                                                                                   ]
+                                                                                                                                 ) ;
+                                                                                                              rdf:type owl:Class
+                                                                                                            ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sate
-:Sate rdf:type owl:Class ;
-      rdfs:subClassOf :HeavySauce .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sate> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sauces
-:Sauces rdf:type owl:Class .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sauces> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf :Food .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Schnitzel
-:Schnitzel rdf:type owl:Class ;
-           rdfs:subClassOf :Meat .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Schnitzel> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls
-:SignatureBowls rdf:type owl:Class ;
-                rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> rdf:type owl:Class ;
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SimpleSauce
-:SimpleSauce rdf:type owl:Class ;
-             rdfs:subClassOf :Sauces .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SimpleSauce> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sauces> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sourcream
-:Sourcream rdf:type owl:Class ;
-           rdfs:subClassOf :HeavySauce .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Sourcream> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/HeavySauce> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Special
-:Special rdf:type owl:Class ;
-         rdfs:subClassOf :PotatoPreparation .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Special> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreparation> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SpicyBowl
-:SpicyBowl rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :hasVegetables ;
-                                                        owl:someValuesFrom :ChiliPepper
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] ;
-           rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SpicyBowl> rdf:type owl:Class ;
+                                                                                    owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl>
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasVegetable> ;
+                                                                                                                                 owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/ChiliPepper>
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ] ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Steak
-:Steak rdf:type owl:Class ;
-       rdfs:subClassOf :Meat .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Steak> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/TheProductiveBowl
-:TheProductiveBowl rdf:type owl:Class ;
-                   rdfs:subClassOf :SignatureBowls ,
-                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasAnimalProducts ;
-                                                            owl:someValuesFrom :Meat
-                                                          ]
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasPreparation ;
-                                                            owl:someValuesFrom :Mash
-                                                          ]
-                                                        ) ;
-                                     rdf:type owl:Class
-                                   ] .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/TheProductiveBowl> rdf:type owl:Class ;
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/SignatureBowls> ,
+                                                                                                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                     owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                                                   ]
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                                                     owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mash>
+                                                                                                                                   ]
+                                                                                                                                 ) ;
+                                                                                                              rdf:type owl:Class
+                                                                                                            ] ,
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                              owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                            ] ,
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasPreparation> ;
+                                                                                                              owl:allValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Mash>
+                                                                                                            ] .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/VeganBowl
-:VeganBowl rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( :VegetarianBowl
-                                                      [ rdf:type owl:Class ;
-                                                        owl:complementOf [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :hasAnimalProducts ;
-                                                                           owl:someValuesFrom :AnimalProducts
-                                                                         ]
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] ;
-           rdfs:subClassOf :VegetarianBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/VeganBowl> rdf:type owl:Class ;
+                                                                                    owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/VegetarianBowl>
+                                                                                                                               [ rdf:type owl:Class ;
+                                                                                                                                 owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                                                                    owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/AnimalProducts>
+                                                                                                                                                  ]
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ] ;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/VegetarianBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables
-:Vegetables rdf:type owl:Class ;
-            rdfs:subClassOf :Ingredient .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Vegetables> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Ingredient> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/VegetarianBowl
-:VegetarianBowl rdf:type owl:Class ;
-                owl:equivalentClass [ owl:intersectionOf ( :PotatoBowl
-                                                           [ rdf:type owl:Class ;
-                                                             owl:complementOf [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :hasAnimalProducts ;
-                                                                                owl:someValuesFrom :Meat
-                                                                              ]
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ] ;
-                rdfs:subClassOf :PotatoBowl .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/VegetarianBowl> rdf:type owl:Class ;
+                                                                                         owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl>
+                                                                                                                                    [ rdf:type owl:Class ;
+                                                                                                                                      owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                                                                         owl:onProperty <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/hasAnimalProduct> ;
+                                                                                                                                                         owl:someValuesFrom <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/Meat>
+                                                                                                                                                       ]
+                                                                                                                                    ]
+                                                                                                                                  ) ;
+                                                                                                               rdf:type owl:Class
+                                                                                                             ] ;
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoBowl> .
 
 
 ###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/WholePotatos
-:WholePotatos rdf:type owl:Class ;
-              rdfs:subClassOf :PotatoPreparation .
+<http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/WholePotatos> rdf:type owl:Class ;
+                                                                                       rdfs:subClassOf <http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4/PotatoPreparation> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#ChefGSpecial
+:ChefGSpecial rdf:type owl:NamedIndividual ,
+                       :Chefs ,
+                       owl:Thing ;
+              owl:differentFrom :ChefKSpecial ,
+                                :ChefYSpecial .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#ChefKSpecial
+:ChefKSpecial rdf:type owl:NamedIndividual ,
+                       :Chefs ,
+                       owl:Thing ;
+              owl:differentFrom :ChefYSpecial .
+
+
+###  http://www.semanticweb.org/jhaas/ontologies/2023/10/untitled-ontology-4#ChefYSpecial
+:ChefYSpecial rdf:type owl:NamedIndividual ,
+                       :Chefs ,
+                       owl:Thing .
 
 
 ###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
